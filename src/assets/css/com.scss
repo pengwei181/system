@@ -1,0 +1,75 @@
+/* 颜色变量（未启用） */
+$pw-page-bg: #F7F7F7;// 背景色
+$pw-text-color: #333333;// 文字色
+$pw-text-color-grey: #999;// 辅助灰色
+$pw-text-color-disable: #c0c0c0;// 灰色阴影色
+$pw-bg-color-mask: rgba(0, 0, 0, 0.4);// 遮罩颜色
+$pw-opacity-disabled: 0.3; // 组件禁用态的透明度
+$pw-opacity-active: 0.8; // 组件点击态透明度
+
+/* 行为相关颜色 */
+$pw-color-primary: #007aff;
+$pw-color-success: #4cd964;
+$pw-color-warning: #f0ad4e;
+$pw-color-error: #dd524d;
+
+/* 页面外元素 */
+.container {
+  height: 100%;
+  width: 100%;
+}
+/* 点击状态 */
+.pw-state-active {
+  opacity: 0.8;
+}
+/* 隐藏状态 */
+.pw-state-dis {
+  display: none;
+}
+/* 看得见触摸不见状态 */
+.pw-state-look {
+  pointer-events: none;
+}
+/* 元素取消拖动变色 */
+.user-none {
+  -moz-user-select: none;/***火狐***/
+  -webkit-user-select: none;/***webkit浏览器***/
+  -ms-user-select: none;/***IE10***/
+  -khtml-user-select: none;/***早期浏览器***/
+  user-select: none;
+}
+/* 注意:清除子元素带给父元素的magrin。1.内容生成。2.父可overflow:hidden或auto。3.透明边框.4.给父设置padding。*/
+.clear-margin:before {
+  content: '';
+  display: table;
+}
+.clexg {
+  *zoom: 1;
+}
+.clexg:after {
+  clear: both;
+  content:".";
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+/* 通用 */
+body, html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+button {
+  outline: none;
+}
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1, h2, h3, h4, h5, h6, dl, dt, dd, p {
+  margin: 0;
+}
