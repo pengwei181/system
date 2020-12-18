@@ -9,8 +9,8 @@
       <header-nav></header-nav>
       <!-- 主体内容 -->
       <div class="main-body">
-        <div class="">
-          <div>
+        <div class="mrigin-body">
+          <div class="cont">
             <!-- <keep-alive> -->
               <router-view/>
             <!-- </keep-alive> -->
@@ -51,13 +51,35 @@ export default {
     flex: none;
     width: 220px;
     height: 100%;
+    position: relative;
+    z-index: 2;
   }
   .home-main {
     flex: auto;
     height: 100%;
+    position: relative;
+    z-index: 1;
     .main-body {
-      height: calc(100% -50px);
-
+      height: calc(100% - 50px);
+      padding: 20px;
+      padding-bottom: 0;
+      box-sizing: border-box;
+      background: #F7F7F7;
+      .mrigin-body {
+        background: #ffffff;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0 0px 10px #c2c2c2;
+        .cont {
+          height: 100%;
+          overflow-y: scroll;
+          margin-right: -17px;
+          padding: 20px;
+          //padding-bottom: 0;
+          box-sizing: border-box;
+        }
+      }
     }
   }
 }
