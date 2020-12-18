@@ -1,7 +1,7 @@
 <template>
   <div class="container login">
     <video class="video" autoplay="autoplay" loop="loop" muted>
-      <source src="../../assets/video/vb1-3.mp4" type="video/mp4"/>
+      <source src="@/assets/video/vb1-3.mp4" type="video/mp4"/>
       您的浏览器不支持 video 标签。
     </video>
     <div class="particlesId" id="particlesId"></div>
@@ -12,10 +12,10 @@
       </div>
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0" class="login_form" @submit.native.prevent>
         <el-form-item label="" label-width="0" prop="username">
-          <el-input class="lang_input" placeholder="请输入您的账号" prefix-icon="el-icon-user" clearable v-model="ruleForm.username"></el-input>
+          <el-input class="lang_input" placeholder="请输入您的账号" prefix-icon="el-icon-user" maxlength="20" clearable v-model.trim="ruleForm.username"></el-input>
         </el-form-item>
         <el-form-item label="" label-width="0" prop="password">
-          <el-input class="lang_input" placeholder="请输入您的密码" prefix-icon="el-icon-lock" show-password v-model="ruleForm.password"></el-input>
+          <el-input class="lang_input" placeholder="请输入您的密码" prefix-icon="el-icon-lock" maxlength="18" show-password v-model.trim="ruleForm.password"></el-input>
         </el-form-item>
         <el-form-item label="" label-width="0" size="mini">
           <el-checkbox label="记住账号密码" name="type" v-model="isRememberPass"></el-checkbox>
@@ -32,7 +32,7 @@
 import particles from 'particles.js' 
 import particlesConfig from '@/utils/particles.json'
 import { setCookie, getCookie, delCookie } from '@/utils/storage'
-// import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'login',
@@ -47,6 +47,7 @@ export default {
       rules: {
         username: [
           { required: true, message: '请输入您的账号', trigger: 'blur' },
+          { min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入您的密码', trigger: 'blur' },
@@ -54,6 +55,13 @@ export default {
         ]
       }
     }
+  },
+  computed: {
+    // vuex的map的2种用法，原理都是vuex的属性映射到当前定义的属性
+    // ...mapState({
+    //   token: state => state.token
+    // }),
+    // ...mapState(['token']),
   },
   created() {
 
@@ -98,7 +106,7 @@ export default {
         }
       });
     },
-    // 登录接口
+    // 登录接口(未接)
     loginFunc() {
       login(this.ruleForm).then((res)=>{
         res = res.data
